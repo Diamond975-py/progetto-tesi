@@ -1,0 +1,7 @@
+
+lambda.zip
+*.tfstate
+*.tfstate.*
+crash.log
+.terraform/
+*.txt
