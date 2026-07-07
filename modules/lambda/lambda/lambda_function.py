@@ -9,29 +9,59 @@ BUCKET_NAME = os.environ.get("BUCKET_NAME", "documenti")
 EXPIRATION = 3600
 
 def s3_trigger(event, context):
+
     try:
         print("[!] Evento S3 ricevuto")
 
+
+        if "Records" not in event:
+            raise Exception("Evento senza Records")
+
+
         for record in event["Records"]:
 
-            file_name = record["s3"]["object"]["key"]
-            file_size = record["s3"]["object"]["size"]
             bucket = record["s3"]["bucket"]["name"]
-            timestamp = record["eventTime"]
+            key = record["s3"]["object"]["key"]
 
-            print("===== FILE METADATA =====")
+            timestamp = record["eventTime"]
+            event_name = record["eventName"]
+
+
+            # Recupero metadata dal file S3
+            metadata = s3.head_object(
+                Bucket=bucket,
+                Key=key
+            )
+
+
+            file_size = metadata["ContentLength"]
+            mime_type = metadata.get(
+                "ContentType",
+                "unknown"
+            )
+
+
+            print("==============================")
+            print("[+] File processato")
             print(f"Bucket: {bucket}")
-            print(f"File: {file_name}")
-            print(f"Size: {file_size} bytes")
+            print(f"Nome file: {key}")
+            print(f"Dimensione: {file_size} bytes")
+            print(f"MIME type: {mime_type}")
             print(f"Timestamp: {timestamp}")
+            print(f"Evento: {event_name}")
+            print("==============================")
+
 
         return {
             "statusCode": 200,
-            "body": "Processed"
+            "body": "Processing completato"
         }
 
+
     except Exception as e:
-        print(f"[ERROR] {str(e)}")
+
+        print(f"[ERROR] Errore durante processing S3: {str(e)}")
+
         raise e
     
 def upload_presign(event, context):

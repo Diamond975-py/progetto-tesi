@@ -7,7 +7,11 @@ resource "aws_iam_role_policy" "s3_policy" {
     Statement = [
       {
         Effect = "Allow",
-        Action = ["s3:PutObject"],
+        Action = [
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:HeadObject"
+          ],
         Resource = "${var.bucket_arn}/*"
       }
     ]
