@@ -3,7 +3,7 @@ resource "aws_api_gateway_method" "get_test" {
     rest_api_id = aws_api_gateway_rest_api.api.id
     resource_id = aws_api_gateway_resource.test.id
     http_method = "GET"
-    authorization = "NONE"
+    authorization = var.authorization
 }
 
 resource "aws_api_gateway_integration" "get_test_mock" {
@@ -11,18 +11,14 @@ resource "aws_api_gateway_integration" "get_test_mock" {
   resource_id          = aws_api_gateway_resource.test.id
   http_method          = aws_api_gateway_method.get_test.http_method  
   type                 = "MOCK"
-  timeout_milliseconds = 29000
+  timeout_milliseconds = var.timeout_ms
 
   request_parameters = {
     "integration.request.header.X-Authorization" = "'static'"
   }
 
     request_templates = {
-    "application/json" = <<EOF
-    {
-    "statusCode": 200
-    }
-    EOF
+    "application/json" = var.mock_request_template
     }
 }
 
@@ -41,8 +37,8 @@ resource "aws_api_gateway_integration_response" "response_200" {
 
   response_templates = {
     "application/json" = jsonencode({
-      message = "Test completato"
-      status  = "ok"
+      message = var.test_response_message
+      status  = var.test_response_status
     })
   }
 

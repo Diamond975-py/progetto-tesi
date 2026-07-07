@@ -1,6 +1,6 @@
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "s3-kms-config" {
-  bucket = aws_s3_bucket.bucket-documenti.id
+  bucket = aws_s3_bucket.bucket.id
 
   rule {
     apply_server_side_encryption_by_default {
