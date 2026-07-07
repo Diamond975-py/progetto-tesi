@@ -9,27 +9,31 @@ BUCKET_NAME = os.environ.get("BUCKET_NAME", "documenti")
 EXPIRATION = 3600
 
 def s3_trigger(event, context):
-    print(f"[!] Evento S3")
-    if "Records" not in event:
-       print("[i] Evento di test ignorato")
-       return
+    try:
+        print("[!] Evento S3 ricevuto")
 
+        for record in event["Records"]:
 
-    for event in event["Records"]:
-       bucket = event["s3"]["bucket"]["name"]
-       key = event["s3"]["object"]["key"]
-       ip_addr = event["requestParameters"]["sourceIPAddress"]
+            file_name = record["s3"]["object"]["key"]
+            file_size = record["s3"]["object"]["size"]
+            bucket = record["s3"]["bucket"]["name"]
+            timestamp = record["eventTime"]
 
-       print(f"[*] Nuovo file: {key} nel bucket {bucket}")
-       print(f"[*] Uploaded from {ip_addr}")
+            print("===== FILE METADATA =====")
+            print(f"Bucket: {bucket}")
+            print(f"File: {file_name}")
+            print(f"Size: {file_size} bytes")
+            print(f"Timestamp: {timestamp}")
 
-    print(f"\n[i] Dettagli tecnici:\n{event}")
+        return {
+            "statusCode": 200,
+            "body": "Processed"
+        }
 
-    return {
-       "statusCode": 200,
-       "body": "OK"
-    }
-
+    except Exception as e:
+        print(f"[ERROR] {str(e)}")
+        raise e
+    
 def upload_presign(event, context):
    print(f"[!] Evento riconosciuto: {event}")
 
