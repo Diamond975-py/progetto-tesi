@@ -1,11 +1,4 @@
 
-module "iam" {
-  source = "./modules/iam"
-
-  lambda_role_name  = "lambda_execution_role"
-  bucket_arn = module.s3.bucket_arn
-}
-
 module "s3" {
   source = "./modules/s3"
 
@@ -16,17 +9,19 @@ module "lambda_s3_trigger" {
   source = "./modules/lambda"
 
   function_name    = "s3_trigger"
-  role_arn         = module.iam.role_arn
   handler          = "lambda_function.s3_trigger"
   runtime          = "python3.11"
+  lambda_role_name = "s3_trigger_role"
+  bucket_arn = module.s3.bucket_arn
 }
 
 module "lambda_upload_presign" {
   source = "./modules/lambda"
   function_name    = "upload_presign"
-  role_arn         = module.iam.role_arn
   handler          = "lambda_function.upload_presign"
   runtime          = "python3.11"
+  lambda_role_name = "upload_presign_role"
+  bucket_arn = module.s3.bucket_arn
 }
 
 module "api" {

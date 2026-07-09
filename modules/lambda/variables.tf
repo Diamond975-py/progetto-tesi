@@ -1,4 +1,11 @@
 variable "function_name" {}
-variable "role_arn" {}
 variable "handler" {}
 variable "runtime" {}
+
+variable "lambda_role_name" {
+  type = string
+}
+
+variable "bucket_arn" {
+  type = string
+}
