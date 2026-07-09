@@ -7,7 +7,7 @@ s3 = boto3.client("s3")
 dynamodb = boto3.resource("dynamodb")
 
 table = dynamodb.Table(
-    "FileMetadata"
+    "FileMetaData"
 )
 
 BUCKET_NAME = os.environ.get("BUCKET_NAME", "documenti")
@@ -113,7 +113,7 @@ def upload_presign(event, context):
             "file_id": file_id,
             "file_name": file_name,
             "upload_url": url,
-            "epires_in": EXPIRATION
+            "expires_in": EXPIRATION
          })
       }
 
