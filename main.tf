@@ -13,6 +13,7 @@ module "lambda_s3_trigger" {
   runtime          = "python3.11"
   lambda_role_name = "s3_trigger_role"
   bucket_arn = module.s3.bucket_arn
+  dynamodb_table_arn = module.dynamodb.table_arn
 }
 
 module "lambda_upload_presign" {
@@ -33,7 +34,6 @@ module "api" {
 
 module "dynamodb" {
   source = "./modules/dynamodb"
-
   table_name = "FileMetaData"
 }
 

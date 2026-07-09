@@ -15,7 +15,7 @@ resource "aws_lambda_function" "this" {
   source_code_hash =  data.archive_file.archive.output_base64sha256
 
     depends_on = [
-    aws_iam_role_policy.s3_policy,
+    aws_iam_role_policy.lambda_policy,
     aws_iam_role_policy_attachment.lambda_logs
   ]
 }

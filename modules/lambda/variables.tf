@@ -9,3 +9,8 @@ variable "lambda_role_name" {
 variable "bucket_arn" {
   type = string
 }
+
+variable "dynamodb_table_arn" {
+  type = string
+  default = null
+}

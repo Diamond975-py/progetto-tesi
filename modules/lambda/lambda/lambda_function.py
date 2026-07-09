@@ -1,10 +1,15 @@
-import boto3
+import boto3 # type: ignore
 import json
 import uuid
 import os
 
 s3 = boto3.client("s3")
- 
+dynamodb = boto3.resource("dynamodb")
+
+table = dynamodb.Table(
+    "FileMetadata"
+)
+
 BUCKET_NAME = os.environ.get("BUCKET_NAME", "documenti")
 EXPIRATION = 3600
 
@@ -40,8 +45,8 @@ def s3_trigger(event, context):
                 "unknown"
             )
 
-
-            print("==============================")
+ 
+               
             print("[+] File processato")
             print(f"Bucket: {bucket}")
             print(f"Nome file: {key}")
@@ -51,7 +56,17 @@ def s3_trigger(event, context):
             print(f"Evento: {event_name}")
             print("==============================")
 
-
+            table.put_item(
+               Item={
+                  "file_id": key,
+                  "bucket": bucket,
+                  "size": file_size,
+                  "mime_type": mime_type,
+                  "timestamp": timestamp,
+                  "status": "PROCESSED"
+               }
+            )
+               
         return {
             "statusCode": 200,
             "body": "Processing completato"
