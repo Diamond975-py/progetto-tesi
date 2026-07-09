@@ -31,6 +31,12 @@ module "api" {
   upload_lambda_function_name       = module.lambda_upload_presign.name
 }
 
+module "dynamodb" {
+  source = "./modules/dynamodb"
+
+  table_name = "FileMetaData"
+}
+
 resource "aws_lambda_permission" "allow_s3" {
   statement_id  = "AllowS3Invoke"
   action        = "lambda:InvokeFunction"
