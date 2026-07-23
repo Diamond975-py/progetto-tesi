@@ -14,3 +14,8 @@ variable "dynamodb_table_arn" {
   type = string
   default = null
 }
+
+variable "reserved_concurrent_executions" {
+  type = number
+  default = 10
+}
