@@ -1,30 +1,28 @@
 resource "aws_cognito_user_pool" "this" {
+
   name = "${var.project_name}-${var.environment}-user-pool"
 
-  auto_verified_attributes = ["email"]
+  username_attributes = [
+    "email"
+  ]
+
+  auto_verified_attributes = [
+    "email"
+  ]
 
   schema {
-    name     = "email"
-    required = true
+
+    name = "email"
+
     attribute_data_type = "String"
+
+    required = true
+
+    mutable = true
+
   }
 
-  password_policy {
-    minimum_length    = 8
-    require_lowercase = true
-    require_uppercase = true
-    require_numbers   = true
-    require_symbols   = false
-  }
-
-  mfa_configuration = "OFF" # opzionale, non necessario in ambiente di testing
-
-  tags = {
-    Project = var.project_name
-    Env     = var.environment
-  }
 }
-
 resource "aws_cognito_user_pool_client" "this" {
   name         = "${var.project_name}-${var.environment}-app-client"
   user_pool_id = aws_cognito_user_pool.this.id

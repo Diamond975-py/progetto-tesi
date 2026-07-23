@@ -15,12 +15,20 @@ resource "aws_lambda_permission" "apigw_upload" {
 resource "aws_api_gateway_deployment" "deploy" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   triggers = {
+
   redeployment = sha1(jsonencode([
+
     aws_api_gateway_resource.test.id,
-    aws_api_gateway_resource.upload.id
+    aws_api_gateway_resource.upload.id,
+
+    aws_api_gateway_method.get_test.id,
+    aws_api_gateway_method.post_upload.id
+
   ]))
+
+  }
 }
-}
+
 
 resource "aws_api_gateway_stage" "prod" {
   rest_api_id   = aws_api_gateway_rest_api.api.id
