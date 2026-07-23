@@ -10,6 +10,7 @@ resource "aws_cognito_user_pool" "this" {
     "email"
   ]
 
+  /*
   schema {
 
     name = "email"
@@ -21,7 +22,7 @@ resource "aws_cognito_user_pool" "this" {
     mutable = true
 
   }
-
+  */
 }
 resource "aws_cognito_user_pool_client" "this" {
   name         = "${var.project_name}-${var.environment}-app-client"

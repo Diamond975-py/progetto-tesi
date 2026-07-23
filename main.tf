@@ -3,6 +3,11 @@ module "s3" {
   source = "./modules/s3"
 
   bucket_name     = "documenti"
+  
+  lambda_role_arn = [
+    module.lambda_s3_trigger.role_arn,
+    module.lambda_upload_presign.role_arn
+  ]
 }
 
 module "lambda_s3_trigger" {
@@ -14,6 +19,7 @@ module "lambda_s3_trigger" {
   lambda_role_name = "s3_trigger_role"
   bucket_arn = module.s3.bucket_arn
   dynamodb_table_arn = module.dynamodb.table_arn
+  s3_actions = ["s3:GetObject", "s3:HeadObject"]
 }
 
 module "lambda_upload_presign" {
@@ -23,6 +29,7 @@ module "lambda_upload_presign" {
   runtime          = "python3.11"
   lambda_role_name = "upload_presign_role"
   bucket_arn = module.s3.bucket_arn
+  s3_actions = ["s3:PutObject"]
 }
 
 module "api" {

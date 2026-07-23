@@ -19,3 +19,7 @@ variable "reserved_concurrent_executions" {
   type = number
   default = 10
 }
+
+variable "s3_actions" {
+  type = list(string)
+}
