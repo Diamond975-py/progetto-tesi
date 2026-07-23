@@ -23,3 +23,8 @@ variable "reserved_concurrent_executions" {
 variable "s3_actions" {
   type = list(string)
 }
+
+variable "kms_key_arn" {
+  type    = string
+  default = null
+}

@@ -28,11 +28,24 @@ resource "aws_iam_role_policy" "lambda_policy" {
 
           Resource = var.dynamodb_table_arn
         }
+      ] : [],
+
+      var.kms_key_arn != null ? [
+        {
+          Effect = "Allow"
+
+          Action = [
+            "kms:Encrypt",
+            "kms:Decrypt",
+            "kms:GenerateDataKey"
+          ]
+
+          Resource = var.kms_key_arn
+        }
       ] : []
     )
   })
 }
-
 
 resource "aws_iam_role_policy_attachment" "lambda_logs" {
   role       = aws_iam_role.lambda_execution_role.name

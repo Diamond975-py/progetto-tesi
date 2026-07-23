@@ -1,4 +1,4 @@
-/*
+
 resource "aws_api_gateway_request_validator" "upload_validator" {
 
   name = "upload-request-validator"
@@ -10,4 +10,3 @@ resource "aws_api_gateway_request_validator" "upload_validator" {
   validate_request_parameters = true
 
 }
-*/

@@ -13,11 +13,14 @@ resource "aws_kms_key" "KMS" {
       {
         Sid    = "Enable IAM Root Permissions"
         Effect = "Allow"
-        Principal = "*"
-        // trattandosi di localhost tutte le azioni sono permesse, ma possono essere definite in base agli utenti IAM
+        Principal = {
+          AWS = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+        }
         Action   = "kms:*"
         Resource = "*"
       }
     ]
   })
 }
+
+data "aws_caller_identity" "current" {}

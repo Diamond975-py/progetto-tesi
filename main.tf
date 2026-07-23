@@ -30,6 +30,7 @@ module "lambda_upload_presign" {
   lambda_role_name = "upload_presign_role"
   bucket_arn = module.s3.bucket_arn
   s3_actions = ["s3:PutObject"]
+  kms_key_arn = module.s3.kms_key_arn
 }
 
 module "api" {
