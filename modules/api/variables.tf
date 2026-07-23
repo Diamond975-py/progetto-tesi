@@ -14,7 +14,9 @@ variable "upload_path" {
 }
 
 variable "authorization" {
-  default = "NONE"
+  type = string
+
+  default = "COGNITO_USER_POOLS"
 }
 
 variable "timeout_ms" {
@@ -39,4 +41,8 @@ variable "mock_request_template" {
   "statusCode": 200
 }
 EOF
+}
+
+variable "cognito_user_pool_arn" {
+  type = string
 }

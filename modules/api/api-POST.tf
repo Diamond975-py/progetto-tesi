@@ -4,6 +4,7 @@ resource "aws_api_gateway_method" "post_upload" {
     resource_id = aws_api_gateway_resource.upload.id
     http_method = "POST"
     authorization = var.authorization
+    authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "upload_lambda" {

@@ -15,6 +15,8 @@ provider "aws" {
     iam = "http://localhost:4566"
     sts = "http://localhost:4566"
     apigateway = "http://localhost:4566"
+    cognitoidentity = "http://localhost:4566"
+    cognitoidp       = "http://localhost:4566"
   }
 }
 

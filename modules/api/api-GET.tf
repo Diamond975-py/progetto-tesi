@@ -4,6 +4,7 @@ resource "aws_api_gateway_method" "get_test" {
     resource_id = aws_api_gateway_resource.test.id
     http_method = "GET"
     authorization = var.authorization
+    authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "get_test_mock" {

@@ -29,7 +29,8 @@ module "api" {
   source = "./modules/api"
   api_name = "API"
   upload_lambda_invoke_arn = module.lambda_upload_presign.invoke_arn
-  upload_lambda_function_name       = module.lambda_upload_presign.name
+  upload_lambda_function_name = module.lambda_upload_presign.name
+  cognito_user_pool_arn = module.cognito.user_pool_arn
 }
 
 module "dynamodb" {
@@ -55,3 +56,14 @@ resource "aws_s3_bucket_notification" "trigger" {
 
   depends_on = [aws_lambda_permission.allow_s3]
 }
+
+module "cognito" {
+  source = "./modules/cognito"
+
+  project_name = "serverless-sharepoint"
+  environment  = "dev"
+
+  callback_urls = ["http://localhost:4566"]
+  logout_urls   = ["http://localhost:4566"]
+}
+   
