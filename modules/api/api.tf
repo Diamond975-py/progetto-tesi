@@ -29,11 +29,59 @@ resource "aws_api_gateway_deployment" "deploy" {
   }
 }
 
-
 resource "aws_api_gateway_stage" "prod" {
+
   rest_api_id   = aws_api_gateway_rest_api.api.id
   deployment_id = aws_api_gateway_deployment.deploy.id
   stage_name    = var.stage_name
+
+  access_log_settings {
+
+    destination_arn = aws_cloudwatch_log_group.api_gateway.arn
+
+
+    format = jsonencode({
+
+      requestId = "$context.requestId"
+
+      ip = "$context.identity.sourceIp"
+
+      caller = "$context.identity.caller"
+
+      user = "$context.identity.user"
+
+      requestTime = "$context.requestTime"
+
+      httpMethod = "$context.httpMethod"
+
+      resourcePath = "$context.resourcePath"
+
+      status = "$context.status"
+
+      protocol = "$context.protocol"
+
+      responseLength = "$context.responseLength"  
+
+    })  
+
+  }
+
+
+  xray_tracing_enabled = true
+
+}
+
+resource "aws_api_gateway_method_settings" "prod" {
+  rest_api_id = aws_api_gateway_rest_api.api.id
+  stage_name  = aws_api_gateway_stage.prod.stage_name
+  method_path = "*/*"
+
+  settings {
+    throttling_rate_limit  = var.rate_limit
+    throttling_burst_limit = var.burst_limit
+    logging_level           = "INFO"
+    metrics_enabled          = true
+  }
 }
 
 resource "aws_api_gateway_authorizer" "cognito" {

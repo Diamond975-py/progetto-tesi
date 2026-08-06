@@ -46,3 +46,15 @@ EOF
 variable "cognito_user_pool_arn" {
   type = string
 }
+
+variable ip_limit {
+  default = 10
+}
+
+variable rate_limit {
+  default = 10
+}
+
+variable burst_limit {
+  default = 20
+}

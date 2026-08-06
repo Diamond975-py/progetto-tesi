@@ -17,6 +17,8 @@ provider "aws" {
     apigateway = "http://localhost:4566"
     cognitoidentity = "http://localhost:4566"
     cognitoidp       = "http://localhost:4566"
+    logs = "http://localhost:4566"
+    wafv2 = "http://localhost:4566"
   }
 }
 

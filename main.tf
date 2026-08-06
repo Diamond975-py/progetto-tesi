@@ -20,6 +20,7 @@ module "lambda_s3_trigger" {
   bucket_arn = module.s3.bucket_arn
   dynamodb_table_arn = module.dynamodb.table_arn
   s3_actions = ["s3:GetObject", "s3:HeadObject"]
+  
 }
 
 module "lambda_upload_presign" {
@@ -31,6 +32,7 @@ module "lambda_upload_presign" {
   bucket_arn = module.s3.bucket_arn
   s3_actions = ["s3:PutObject"]
   kms_key_arn = module.s3.kms_key_arn
+  kms_key_id = module.s3.kms_key_id
 }
 
 module "api" {
