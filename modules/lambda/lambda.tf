@@ -18,6 +18,10 @@ resource "aws_lambda_function" "this" {
     aws_iam_role_policy.lambda_policy,
     aws_iam_role_policy_attachment.lambda_logs
   ]
+
+  tracing_config {
+    mode = "Active"
+  }
   
   reserved_concurrent_executions = var.reserved_concurrent_executions
 }

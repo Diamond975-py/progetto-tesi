@@ -5,6 +5,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3-kms-config" {
     main = aws_s3_bucket.bucket.id
     logs = aws_s3_bucket.logs.id
   }
+
+  bucket = each.value
   
   rule {
     apply_server_side_encryption_by_default {
@@ -13,4 +15,3 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3-kms-config" {
     }
   }
 }
-
