@@ -17,22 +17,30 @@ module "lambda_s3_trigger" {
   handler          = "lambda_function.s3_trigger"
   runtime          = "python3.11"
   lambda_role_name = "s3_trigger_role"
+  bucket_name = module.s3.bucket_name
   bucket_arn = module.s3.bucket_arn
   dynamodb_table_arn = module.dynamodb.table_arn
-  s3_actions = ["s3:GetObject", "s3:HeadObject"]
+  s3_actions = ["s3:GetObject"]
   
 }
 
 module "lambda_upload_presign" {
   source = "./modules/lambda"
+
   function_name    = "upload_presign"
   handler          = "lambda_function.upload_presign"
   runtime          = "python3.11"
   lambda_role_name = "upload_presign_role"
-  bucket_arn = module.s3.bucket_arn
+
+  bucket_arn = module.s3.quarantine_bucket_arn
+
   s3_actions = ["s3:PutObject"]
+
   kms_key_arn = module.s3.kms_key_arn
-  kms_key_id = module.s3.kms_key_id
+  kms_key_id  = module.s3.kms_key_id
+
+  bucket_name            = module.s3.bucket_name
+  quarantine_bucket_name = module.s3.quarantine_bucket_name
 }
 
 module "api" {
@@ -53,11 +61,11 @@ resource "aws_lambda_permission" "allow_s3" {
   action        = "lambda:InvokeFunction"
   function_name = module.lambda_s3_trigger.name
   principal     = "s3.amazonaws.com"
-  source_arn    = module.s3.bucket_arn
+  source_arn    = module.s3.quarantine_bucket_arn
 }
 
 resource "aws_s3_bucket_notification" "trigger" {
-  bucket = module.s3.bucket_id
+  bucket = module.s3.quarantine_bucket_id
 
   lambda_function {
     lambda_function_arn = module.lambda_s3_trigger.arn
@@ -77,3 +85,23 @@ module "cognito" {
   logout_urls   = ["http://localhost:4566"]
 }
    
+resource "aws_iam_role_policy" "s3_trigger_quarantine_read" {
+  name = "s3-trigger-quarantine-read"
+  role = module.lambda_s3_trigger.role_name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+
+    Statement = [
+      {
+        Effect = "Allow"
+
+        Action = [
+          "s3:GetObject"
+        ]
+
+        Resource = "${module.s3.quarantine_bucket_arn}/*"
+      }
+    ]
+  })
+}

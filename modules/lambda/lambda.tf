@@ -19,15 +19,17 @@ resource "aws_lambda_function" "this" {
     aws_iam_role_policy_attachment.lambda_logs
   ]
 
-    environment {
-      variables = {
-        KMS_KEY_ID  = var.kms_key_id
-      }
-  }
-
   tracing_config {
     mode = "Active"
   }
   
   reserved_concurrent_executions = var.reserved_concurrent_executions
+
+  environment {
+    variables = {
+      BUCKET_NAME            = var.bucket_name
+      QUARANTINE_BUCKET_NAME = var.quarantine_bucket_name
+      KMS_KEY_ID             = var.kms_key_id
+    }
+  }
 }

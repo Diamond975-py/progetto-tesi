@@ -4,6 +4,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "s3-kms-config" {
   for_each = {
     main = aws_s3_bucket.bucket.id
     logs = aws_s3_bucket.logs.id
+    quarantine = aws_s3_bucket.quarantine.id
   }
 
   bucket = each.value

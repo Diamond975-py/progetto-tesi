@@ -48,7 +48,7 @@ variable "cognito_user_pool_arn" {
 }
 
 variable ip_limit {
-  default = 10
+  default = 100
 }
 
 variable rate_limit {
