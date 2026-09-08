@@ -2,7 +2,7 @@
 module "s3" {
   source = "./modules/s3"
 
-  bucket_name     = "documenti"
+  bucket_name     = "documenti-793452511140"
   
   lambda_role_arn = [
     module.lambda_s3_trigger.role_arn,

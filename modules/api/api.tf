@@ -14,20 +14,25 @@ resource "aws_lambda_permission" "apigw_upload" {
 
 resource "aws_api_gateway_deployment" "deploy" {
   rest_api_id = aws_api_gateway_rest_api.api.id
+
   triggers = {
+    redeployment = sha1(jsonencode([
+      aws_api_gateway_resource.test.id,
+      aws_api_gateway_resource.upload.id,
 
-  redeployment = sha1(jsonencode([
+      aws_api_gateway_method.get_test.id,
+      aws_api_gateway_method.post_upload.id,
 
-    aws_api_gateway_resource.test.id,
-    aws_api_gateway_resource.upload.id,
+      aws_api_gateway_integration.get_test_mock.id,
+      aws_api_gateway_integration.upload_lambda.id
+    ]))
+  }
 
-    aws_api_gateway_method.get_test.id,
-    aws_api_gateway_method.post_upload.id
-
-  ]))
-
+  lifecycle {
+    create_before_destroy = true
   }
 }
+
 
 resource "aws_api_gateway_stage" "prod" {
 

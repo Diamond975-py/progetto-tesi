@@ -17,7 +17,7 @@ variable "dynamodb_table_arn" {
 
 variable "reserved_concurrent_executions" {
   type = number
-  default = 10
+  default = -1
 }
 
 variable "s3_actions" {
