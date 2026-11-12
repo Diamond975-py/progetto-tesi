@@ -1,0 +1,590 @@
+{
+  "created_at": "2026-11-11T18:45:31.029673+00:00",
+  "account": "793452511140",
+  "region": "eu-south-1",
+  "api_id": "or967p4be5",
+  "baseline": "aws-test-report-1794420485.json",
+  "baseline_sha256": "157318db477662300e9ec608aa764bb1143a019dbc009898210df61aff341296",
+  "source_hashes": {
+    "main.tf": "47c6baa838a567208f3535a02dd27fb7b250381c25b160098fef9a96e6e2698b",
+    "modules/cognito/variables.tf": "ce95b3d331a472136d32296c7c613f5dbd36e2b7eee44e5c21be28ab0434efc3",
+    "modules/cognito/output.tf": "f24bb15b68fc1568468fc164bd12112a2929a93722576201f24f38294025a3ce",
+    "modules/cognito/cognito.tf": "c2b34fd58da01fc00501a98163d71b028e8df83fc7c7469f425e0925a3a7ed6c",
+    "modules/api/variables.tf": "4486b455e195c65b656e782857a0ea54d3e6bc31508bbe229e9031f176fe9908",
+    "modules/api/output.tf": "2a995197386e27bcbefe58af33f950d64c0726bd7cb989e89dd90ad0fc1bb09a",
+    "modules/api/logging.tf": "d654a976416be9d0cc9fa88487640da8f57fa2f15c468cddc7d1fd442522073a",
+    "modules/api/api-POST.tf": "23d490414c6719ff31512d4114d087f7eacb7f3a57f6ad79bbe9f0b57bb655d6",
+    "modules/api/api.tf": "d447ee8591392be06e8bdb8d6b5c037c5fc34138ebb905c77eddf9ce78f6dcc6",
+    "modules/api/api-resources.tf": "49b34e6337eb1036132cf3de2bb8d6f4f507bbcf280e4a603a2c4aec87f074a9",
+    "modules/api/waf.tf": "d9dcf4f7fa207ffd76594c0913c0ae999e20cd931803060c3a7dd7c4b1d8282b",
+    "modules/api/api-role.tf": "3c105e383ae2cd18eccc5e95153fc2ac2279c8211a7d735901391576e4c4b326",
+    "modules/api/api-GET.tf": "122241b12fd82078ec4705fa48ae88ea37fb9d229b1b6e2b886b2283f7b8f7c3",
+    "modules/api/api-validation.tf": "6d5b818cd74dbef17c720990ec243512ba12d42f1b9000dfd71a8c82efb2c344",
+    "modules/api/api-model.tf": "07de74ca6294adf13e547d034ee549186a97a37f9263888bb62e8bc9ebc06cd9",
+    "modules/api/waf-logging.tf": "5420b4b196199cae94d104bdc3a3bb9b1a8fe32cd3d409467aa26b9317e5fd3a",
+    "modules/lambda/variables.tf": "0946c93fa4e90661823f5dbb589a498f5fe364a51f7f61dd9349178569b4fe55",
+    "modules/lambda/output.tf": "346ed73db8cb78733b94fc52d50120419a75b04f9650e6f5861fd617ebccc0d3",
+    "modules/lambda/lambda.tf": "15424a3de52a2d268a0971c96be675a57b4192e6edd7286cdb78ccc260756351",
+    "modules/lambda/lambda-role.tf": "17f040ddc4fe6832ece24bcaf08be8cd4fa040d16a1d4631cf20ad4e5c752855",
+    "modules/lambda/lambda-policies.tf": "944a58d476084c9a12478e1e82dd7a2c5fce9e23610fa5087b5a495c347efe8d",
+    "modules/s3/variables.tf": "e798bd25e6d0c352b000509a5b1de67d4466e1ce958561cb2b31874f310825aa",
+    "modules/s3/output.tf": "81b53b944ba3c841754624effff09433641dd19cee5aed66042119eb88bd85a5",
+    "modules/s3/s3-quarantine.tf": "759432399aaf3994ab36170f828483a172b064c5c7152e33e3baedc19f4857c0",
+    "modules/s3/s3.tf": "580cd0ec8cce0c2d49546d2156899e9999a1d5630330f7092cbcc05ecdb12577",
+    "modules/s3/s3-logs.tf": "a3ede7fe3f54ac66916639ad81dad93568aed91369c901195a4f82aaf08b92ca",
+    "modules/s3/s3-encryption.tf": "4831b599a110dc758253f49b28304d787fb452e7b7853fecf6cf180b8a3ba871",
+    "modules/s3/s3-policy.tf": "2938ed639730a79fb1a4da40cf309a615f24a2c7f90437af2a97b074e7750682",
+    "modules/s3/s3-block.tf": "a0429b8c388a17b32cd652a6245e37467ad6ac0c2d074d4c5c5980bc1b8cc70f",
+    "modules/s3/kms.tf": "f5941fd1c8a3d543bc3139093870cb4821c3169031bfc938e32a334b6d385d1a",
+    "modules/dynamodb/variables.tf": "c25897b208f48687928f3683380fc636e83e91dec9f7d64f9515944b978f770b",
+    "modules/dynamodb/output.tf": "9e0f6625214dc37ea8568242d183c9274e7828da126cb24be43c4a8340b822e3",
+    "modules/dynamodb/dynamodb.tf": "14a39ff3415c33040ffe4b3bcdc19ebc8787a3268c67cd953aeb0695f4976bfa",
+    "modules/dynamodb/kms.tf": "e53e7162fe798562e221660cc56ea9ab5090e6054482a34c43c5c4b80629eda3",
+    "modules/lambda/lambda/lambda_function.py": "5e4a31317a42b4d31e4e9ce70d98e21c50660b6ff0713733fa3d12a8194a6b7d"
+  },
+  "results": [
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Identità AWS",
+      "status": "PASS",
+      "detail": "account 793452511140"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Convergenza Terraform",
+      "status": "PASS",
+      "detail": "nessuna modifica"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Configurazione Lambda s3_trigger",
+      "status": "PASS",
+      "detail": "state=Active, timeout=60, memory=256"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Configurazione Lambda upload_presign",
+      "status": "PASS",
+      "detail": "state=Active, timeout=15, memory=256"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Notifica S3→Lambda",
+      "status": "PASS",
+      "detail": "configurazioni=1"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "S3 documenti-793452511140",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "S3 documenti-793452511140-quarantine",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "S3 documenti-793452511140-logs",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=AES256"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "DynamoDB",
+      "status": "PASS",
+      "detail": "status=ACTIVE, SSE=ENABLED"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "DynamoDB PITR",
+      "status": "PASS",
+      "detail": "ENABLED"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "User pool collegato all'API",
+      "status": "PASS",
+      "detail": "serverless-sharepoint-dev-user-pool (eu-south-1_Ja8cXtRh7)"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Utente Cognito temporaneo",
+      "status": "PASS",
+      "detail": "terraform-test-1794420435-9883da@example.com"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "API senza token",
+      "status": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "API con token invalido",
+      "status": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "API autenticata /test",
+      "status": "PASS",
+      "detail": "HTTP 200: {'message': 'Test completato', 'status': 'ok'}"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "JSON malformato",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "MIME non consentito",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Proprietà aggiuntiva",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Campo obbligatorio assente",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "WAF/validator input sospetto",
+      "status": "PASS",
+      "detail": "HTTP 400"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Presigned POST valido",
+      "status": "PASS",
+      "detail": "HTTP 204"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Trigger e DynamoDB",
+      "status": "PASS",
+      "detail": "record=1"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Copia nel bucket principale",
+      "status": "PASS",
+      "detail": "key=d7ea2750b1b637334f39a6a85f6e6ede846d669d3181b86693d4eeb89542119b, SSE=aws:kms"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Due versioni della stessa chiave",
+      "status": "PASS",
+      "detail": "HTTP 204, record distinti=2"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Idempotenza evento duplicato",
+      "status": "PASS",
+      "detail": "versioni destinazione prima=1, dopo=1"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Magic bytes discordanti",
+      "status": "PASS",
+      "detail": "upload HTTP 204, stato=REJECTED"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Limite 20 MiB",
+      "status": "PASS",
+      "detail": "HTTP 400"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Alterazione campo KMS firmato",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Accesso anonimo documenti-793452511140",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Accesso anonimo documenti-793452511140-quarantine",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Accesso anonimo documenti-793452511140-logs",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Rate limit WAF/API",
+      "status": "SKIP",
+      "detail": "abilitare con --rate-limit"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Log /aws/lambda/s3_trigger",
+      "status": "PASS",
+      "detail": "eventi=5"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Log /aws/apigateway/API",
+      "status": "PASS",
+      "detail": "eventi=5"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Tracce X-Ray",
+      "status": "PASS",
+      "detail": "tracce=17"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "S3 access log",
+      "status": "SKIP",
+      "detail": "consegna asincrona: verificare il bucket logs dopo alcune ore"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "WAF full logging",
+      "status": "WARN",
+      "detail": "disabilitato nel Terraform con count = 0"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Antivirus reale",
+      "status": "WARN",
+      "detail": "mock rilevato"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Validazione DOCX",
+      "status": "WARN",
+      "detail": "solo firma ZIP"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Checkov",
+      "status": "SKIP",
+      "detail": "comando non installato"
+    },
+    {
+      "kind": "BASELINE_NON_RIESEGUITA",
+      "name": "Pulizia dati temporanei",
+      "status": "PASS",
+      "detail": "completata"
+    },
+    {
+      "kind": "COPERTURA",
+      "name": "Baseline",
+      "status": "INFO",
+      "detail": "Evidenza storica importata; hash sorgenti originali non presenti nel vecchio report"
+    },
+    {
+      "kind": "COPERTURA",
+      "name": "Report WAF/S3",
+      "status": "NON_VERIFICATO",
+      "detail": "Non fornito; nessun burst ripetuto automaticamente"
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Contratto firma e scadenza: application/pdf",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Contratto firma e scadenza: application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Contratto firma e scadenza: image/jpeg",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Contratto firma e scadenza: image/png",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "KMS assente: nessun presigned generato",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "JSON non oggetto: []",
+      "status": "FAIL",
+      "detail": "Handler diretto: atteso 400, ricevuto 500; non prova un bypass del validatore API"
+    },
+    {
+      "kind": "LOCAL",
+      "name": "JSON non oggetto: None",
+      "status": "FAIL",
+      "detail": "Handler diretto: atteso 400, ricevuto 500; non prova un bypass del validatore API"
+    },
+    {
+      "kind": "LOCAL",
+      "name": "JSON non oggetto: 123",
+      "status": "FAIL",
+      "detail": "Handler diretto: atteso 400, ricevuto 500; non prova un bypass del validatore API"
+    },
+    {
+      "kind": "LOCAL",
+      "name": "JSON non oggetto: 'test'",
+      "status": "FAIL",
+      "detail": "Handler diretto: atteso 400, ricevuto 500; non prova un bypass del validatore API"
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Evento privo di versionId",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "HeadObject distingue errore 404",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "HeadObject distingue errore 403",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Rifiuto AV: ramo simulato, non antivirus reale",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Retry dopo copia riuscita e PutItem fallito",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Copia fallita non produce PROCESSED",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Idempotenza concorrente, assenza iniziale sincronizzata",
+      "status": "FAIL",
+      "detail": "Due eventi simultanei hanno prodotto 2 copie: check-then-copy non atomico"
+    },
+    {
+      "kind": "LOCAL",
+      "name": "Rifiuto ZIP generico come DOCX",
+      "status": "LIMITE",
+      "detail": "Un qualsiasi prefisso PK è classificato DOCX"
+    },
+    {
+      "kind": "CODICE",
+      "name": "Antivirus reale",
+      "status": "LIMITE",
+      "detail": "Mock presente"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "upload_presign_role s3:PutObject arn:aws:s3:::documenti-793452511140-quarantine/collaudo-permissioni-non-creato",
+      "status": "PASS",
+      "detail": "Simulazione: allowed; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "upload_presign_role s3:PutObject arn:aws:s3:::documenti-793452511140/collaudo-permissioni-non-creato",
+      "status": "PASS",
+      "detail": "Simulazione: implicitDeny; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "upload_presign_role s3:GetObject arn:aws:s3:::documenti-793452511140/collaudo-permissioni-non-creato",
+      "status": "PASS",
+      "detail": "Simulazione: implicitDeny; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "upload_presign_role dynamodb:PutItem arn:aws:dynamodb:eu-south-1:793452511140:table/FileMetaData",
+      "status": "PASS",
+      "detail": "Simulazione: implicitDeny; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "s3_trigger_role s3:GetObjectVersion arn:aws:s3:::documenti-793452511140-quarantine/collaudo-permissioni-non-creato",
+      "status": "PASS",
+      "detail": "Simulazione: allowed; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "s3_trigger_role s3:PutObject arn:aws:s3:::documenti-793452511140/collaudo-permissioni-non-creato",
+      "status": "PASS",
+      "detail": "Simulazione: allowed; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "s3_trigger_role s3:ListBucket arn:aws:s3:::documenti-793452511140",
+      "status": "PASS",
+      "detail": "Simulazione: allowed; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "s3_trigger_role dynamodb:PutItem arn:aws:dynamodb:eu-south-1:793452511140:table/FileMetaData",
+      "status": "PASS",
+      "detail": "Simulazione: allowed; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "s3_trigger_role s3:DeleteObject arn:aws:s3:::documenti-793452511140/collaudo-permissioni-non-creato",
+      "status": "PASS",
+      "detail": "Simulazione: implicitDeny; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "IAM_SIMULATO",
+      "name": "s3_trigger_role dynamodb:DeleteTable arn:aws:dynamodb:eu-south-1:793452511140:table/FileMetaData",
+      "status": "PASS",
+      "detail": "Simulazione: implicitDeny; escluse resource policy dei ruoli"
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Rotazione KMS e438dc8b-5101-456b-abec-02795b0d1dbd",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Rotazione KMS 4cf79458-8a9e-4d7b-9c94-b0faf86e6859",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Codice testato = codice deployato s3_trigger",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Gruppo log s3_trigger",
+      "status": "PASS",
+      "detail": "Gruppo presente, retention giorni=illimitata"
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Codice testato = codice deployato upload_presign",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Gruppo log upload_presign",
+      "status": "PASS",
+      "detail": "Gruppo presente, retention giorni=illimitata"
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Autenticazione di tutti i metodi",
+      "status": "PASS",
+      "detail": "2 metodi configurati con Cognito; controllo config, non test token"
+    },
+    {
+      "kind": "AWS_READ_ONLY",
+      "name": "Configurazione throttling API",
+      "status": "PASS",
+      "detail": "10 req/s, burst 20; non prova del 429 sotto carico"
+    },
+    {
+      "kind": "STATICO",
+      "name": "checkov",
+      "status": "NON_VERIFICATO",
+      "detail": "Comando non installato; nessuna installazione automatica"
+    },
+    {
+      "kind": "STATICO",
+      "name": "bandit",
+      "status": "NON_VERIFICATO",
+      "detail": "Comando non installato; nessuna installazione automatica"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Throttling API: prova autenticata concorrente con attribuzione del 429",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Token Cognito realmente scaduto, non JWT modificato",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Presigned POST scaduto: rifiuto effettivo S3 dopo attesa",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Confini reali upload: zero byte, 20 MiB esatti, tutti i formati",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Bucket policy/KMS: richieste firmate valide ma non conformi",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Ripristino PITR su tabella temporanea e verifica contenuti",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "Concorrenza e fault injection su AWS isolato",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    },
+    {
+      "kind": "COPERTURA_RESIDUA",
+      "name": "AWSManagedRulesKnownBadInputs: prova attribuita a regola specifica",
+      "status": "NON_VERIFICATO",
+      "detail": "Non eseguito da questo script read-only; non conteggiato come PASS"
+    }
+  ],
+  "summary": {
+    "PASS": 64,
+    "SKIP": 3,
+    "WARN": 3,
+    "INFO": 1,
+    "NON_VERIFICATO": 11,
+    "FAIL": 5,
+    "LIMITE": 2
+  }
+}

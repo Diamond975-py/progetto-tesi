@@ -47,14 +47,14 @@ variable "cognito_user_pool_arn" {
   type = string
 }
 
-variable ip_limit {
+variable "ip_limit" {
   default = 100
 }
 
-variable rate_limit {
+variable "rate_limit" {
   default = 10
 }
 
-variable burst_limit {
+variable "burst_limit" {
   default = 20
 }

@@ -7,11 +7,11 @@ variable "environment" {
 }
 
 variable "callback_urls" {
-  type = list(string)
+  type    = list(string)
   default = ["http://localhost:4566"]
 }
 
 variable "logout_urls" {
-  type = list(string)
+  type    = list(string)
   default = ["http://localhost:4566"]
 }

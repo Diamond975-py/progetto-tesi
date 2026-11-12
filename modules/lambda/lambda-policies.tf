@@ -15,6 +15,16 @@ resource "aws_iam_role_policy" "lambda_policy" {
           Action = var.s3_actions
 
           Resource = "${var.bucket_arn}/*"
+        },
+        {
+          Effect = "Allow"
+
+          Action = [
+            "xray:PutTraceSegments",
+            "xray:PutTelemetryRecords"
+          ]
+
+          Resource = "*"
         }
       ],
 
@@ -30,17 +40,21 @@ resource "aws_iam_role_policy" "lambda_policy" {
         }
       ] : [],
 
-      var.kms_key_arn != null ? [
+      var.kms_key_arn != null || length(var.additional_kms_key_arns) > 0 ? [
         {
           Effect = "Allow"
 
           Action = [
             "kms:Encrypt",
             "kms:Decrypt",
+            "kms:DescribeKey",
             "kms:GenerateDataKey"
           ]
 
-          Resource = var.kms_key_arn
+          Resource = concat(
+            var.kms_key_arn != null ? [var.kms_key_arn] : [],
+            var.additional_kms_key_arns
+          )
         }
       ] : []
     )

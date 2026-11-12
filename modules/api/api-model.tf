@@ -12,16 +12,19 @@ resource "aws_api_gateway_model" "upload_request" {
 
     type = "object"
 
-    required = [
-      "filename"
-    ]
+    required             = ["content_type"]
+    additionalProperties = false
 
     properties = {
 
-      filename = {
-
+      content_type = {
         type = "string"
-
+        enum = [
+          "application/pdf",
+          "image/png",
+          "image/jpeg",
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        ]
       }
 
     }

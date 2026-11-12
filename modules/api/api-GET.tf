@@ -1,16 +1,16 @@
 
 resource "aws_api_gateway_method" "get_test" {
-    rest_api_id = aws_api_gateway_rest_api.api.id
-    resource_id = aws_api_gateway_resource.test.id
-    http_method = "GET"
-    authorization = var.authorization
-    authorizer_id = aws_api_gateway_authorizer.cognito.id
+  rest_api_id   = aws_api_gateway_rest_api.api.id
+  resource_id   = aws_api_gateway_resource.test.id
+  http_method   = "GET"
+  authorization = var.authorization
+  authorizer_id = aws_api_gateway_authorizer.cognito.id
 }
 
 resource "aws_api_gateway_integration" "get_test_mock" {
   rest_api_id          = aws_api_gateway_rest_api.api.id
   resource_id          = aws_api_gateway_resource.test.id
-  http_method          = aws_api_gateway_method.get_test.http_method  
+  http_method          = aws_api_gateway_method.get_test.http_method
   type                 = "MOCK"
   timeout_milliseconds = var.timeout_ms
 
@@ -18,9 +18,9 @@ resource "aws_api_gateway_integration" "get_test_mock" {
     "integration.request.header.X-Authorization" = "'static'"
   }
 
-    request_templates = {
+  request_templates = {
     "application/json" = var.mock_request_template
-    }
+  }
 }
 
 resource "aws_api_gateway_method_response" "response_200" {

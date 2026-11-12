@@ -53,18 +53,14 @@ resource "aws_wafv2_web_acl" "api_waf" {
   #####################################
   # Anonymous IP detection
   #####################################
-
-/*
+  /*
   rule {
 
     name     = "AnonymousIPList"
     priority = 2
 
-
-    action {
-
-      block {}
-
+    override_action {
+      none {}
     }
 
 
@@ -86,7 +82,7 @@ resource "aws_wafv2_web_acl" "api_waf" {
 
       cloudwatch_metrics_enabled = true
 
-      metric_name = "anonymous-ip"ano
+      metric_name = "anonymous-ip"
 
       sampled_requests_enabled = true
 
@@ -103,7 +99,7 @@ resource "aws_wafv2_web_acl" "api_waf" {
 
   rule {
 
-    name     = "AWSManagedRulesCommonRuleSet"
+    name = "AWSManagedRulesCommonRuleSet"
 
     priority = 3
 

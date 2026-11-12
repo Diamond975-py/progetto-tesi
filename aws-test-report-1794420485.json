@@ -1,0 +1,219 @@
+{
+  "started_at": "2026-11-11T18:06:51.452894+00:00",
+  "finished_at": "2026-11-11T18:08:05.054827+00:00",
+  "account": "793452511140",
+  "region": "eu-south-1",
+  "api_id": "or967p4be5",
+  "summary": {
+    "PASS": 35,
+    "SKIP": 3,
+    "WARN": 3
+  },
+  "results": [
+    {
+      "name": "Identità AWS",
+      "status": "PASS",
+      "detail": "account 793452511140"
+    },
+    {
+      "name": "Convergenza Terraform",
+      "status": "PASS",
+      "detail": "nessuna modifica"
+    },
+    {
+      "name": "Configurazione Lambda s3_trigger",
+      "status": "PASS",
+      "detail": "state=Active, timeout=60, memory=256"
+    },
+    {
+      "name": "Configurazione Lambda upload_presign",
+      "status": "PASS",
+      "detail": "state=Active, timeout=15, memory=256"
+    },
+    {
+      "name": "Notifica S3→Lambda",
+      "status": "PASS",
+      "detail": "configurazioni=1"
+    },
+    {
+      "name": "S3 documenti-793452511140",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "name": "S3 documenti-793452511140-quarantine",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "name": "S3 documenti-793452511140-logs",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=AES256"
+    },
+    {
+      "name": "DynamoDB",
+      "status": "PASS",
+      "detail": "status=ACTIVE, SSE=ENABLED"
+    },
+    {
+      "name": "DynamoDB PITR",
+      "status": "PASS",
+      "detail": "ENABLED"
+    },
+    {
+      "name": "User pool collegato all'API",
+      "status": "PASS",
+      "detail": "serverless-sharepoint-dev-user-pool (eu-south-1_Ja8cXtRh7)"
+    },
+    {
+      "name": "Utente Cognito temporaneo",
+      "status": "PASS",
+      "detail": "terraform-test-1794420435-9883da@example.com"
+    },
+    {
+      "name": "API senza token",
+      "status": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "API con token invalido",
+      "status": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "API autenticata /test",
+      "status": "PASS",
+      "detail": "HTTP 200: {'message': 'Test completato', 'status': 'ok'}"
+    },
+    {
+      "name": "JSON malformato",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "MIME non consentito",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "Proprietà aggiuntiva",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "Campo obbligatorio assente",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "WAF/validator input sospetto",
+      "status": "PASS",
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "Presigned POST valido",
+      "status": "PASS",
+      "detail": "HTTP 204"
+    },
+    {
+      "name": "Trigger e DynamoDB",
+      "status": "PASS",
+      "detail": "record=1"
+    },
+    {
+      "name": "Copia nel bucket principale",
+      "status": "PASS",
+      "detail": "key=d7ea2750b1b637334f39a6a85f6e6ede846d669d3181b86693d4eeb89542119b, SSE=aws:kms"
+    },
+    {
+      "name": "Due versioni della stessa chiave",
+      "status": "PASS",
+      "detail": "HTTP 204, record distinti=2"
+    },
+    {
+      "name": "Idempotenza evento duplicato",
+      "status": "PASS",
+      "detail": "versioni destinazione prima=1, dopo=1"
+    },
+    {
+      "name": "Magic bytes discordanti",
+      "status": "PASS",
+      "detail": "upload HTTP 204, stato=REJECTED"
+    },
+    {
+      "name": "Limite 20 MiB",
+      "status": "PASS",
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "Alterazione campo KMS firmato",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "name": "Accesso anonimo documenti-793452511140",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "name": "Accesso anonimo documenti-793452511140-quarantine",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "name": "Accesso anonimo documenti-793452511140-logs",
+      "status": "PASS",
+      "detail": "HTTP 403"
+    },
+    {
+      "name": "Rate limit WAF/API",
+      "status": "SKIP",
+      "detail": "abilitare con --rate-limit"
+    },
+    {
+      "name": "Log /aws/lambda/s3_trigger",
+      "status": "PASS",
+      "detail": "eventi=5"
+    },
+    {
+      "name": "Log /aws/apigateway/API",
+      "status": "PASS",
+      "detail": "eventi=5"
+    },
+    {
+      "name": "Tracce X-Ray",
+      "status": "PASS",
+      "detail": "tracce=17"
+    },
+    {
+      "name": "S3 access log",
+      "status": "SKIP",
+      "detail": "consegna asincrona: verificare il bucket logs dopo alcune ore"
+    },
+    {
+      "name": "WAF full logging",
+      "status": "WARN",
+      "detail": "disabilitato nel Terraform con count = 0"
+    },
+    {
+      "name": "Antivirus reale",
+      "status": "WARN",
+      "detail": "mock rilevato"
+    },
+    {
+      "name": "Validazione DOCX",
+      "status": "WARN",
+      "detail": "solo firma ZIP"
+    },
+    {
+      "name": "Checkov",
+      "status": "SKIP",
+      "detail": "comando non installato"
+    },
+    {
+      "name": "Pulizia dati temporanei",
+      "status": "PASS",
+      "detail": "completata"
+    }
+  ]
+}

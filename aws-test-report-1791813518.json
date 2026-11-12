@@ -1,0 +1,134 @@
+{
+  "started_at": "2026-10-12T13:54:22.501182+00:00",
+  "finished_at": "2026-10-12T13:58:38.815390+00:00",
+  "account": "793452511140",
+  "region": "eu-south-1",
+  "api_id": "or967p4be5",
+  "summary": {
+    "PASS": 21,
+    "WARN": 1,
+    "FAIL": 2
+  },
+  "results": [
+    {
+      "name": "Identità AWS",
+      "status": "PASS",
+      "detail": "account 793452511140"
+    },
+    {
+      "name": "Convergenza Terraform",
+      "status": "PASS",
+      "detail": "nessuna modifica"
+    },
+    {
+      "name": "Configurazione Lambda s3_trigger",
+      "status": "PASS",
+      "detail": "state=Active, timeout=60, memory=256"
+    },
+    {
+      "name": "Configurazione Lambda upload_presign",
+      "status": "PASS",
+      "detail": "state=Active, timeout=15, memory=256"
+    },
+    {
+      "name": "Notifica S3→Lambda",
+      "status": "PASS",
+      "detail": "configurazioni=1"
+    },
+    {
+      "name": "S3 documenti-793452511140",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "name": "S3 documenti-793452511140-quarantine",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "name": "S3 documenti-793452511140-logs",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=AES256"
+    },
+    {
+      "name": "DynamoDB",
+      "status": "PASS",
+      "detail": "status=ACTIVE, SSE=ENABLED"
+    },
+    {
+      "name": "DynamoDB PITR",
+      "status": "WARN",
+      "detail": "DISABLED"
+    },
+    {
+      "name": "User pool collegato all'API",
+      "status": "PASS",
+      "detail": "serverless-sharepoint-dev-user-pool (eu-south-1_Ja8cXtRh7)"
+    },
+    {
+      "name": "Utente Cognito temporaneo",
+      "status": "PASS",
+      "detail": "terraform-test-1791813281-9a36ab@example.com"
+    },
+    {
+      "name": "API senza token",
+      "status": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "API con token invalido",
+      "status": "PASS",
+      "detail": "HTTP 401"
+    },
+    {
+      "name": "API autenticata /test",
+      "status": "PASS",
+      "detail": "HTTP 200: {'message': 'Test completato', 'status': 'ok'}"
+    },
+    {
+      "name": "JSON malformato",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "MIME non consentito",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "Proprietà aggiuntiva",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "Campo obbligatorio assente",
+      "status": "PASS",
+      "detail": "HTTP 400: {'message': 'Invalid request body'}"
+    },
+    {
+      "name": "WAF/validator input sospetto",
+      "status": "PASS",
+      "detail": "HTTP 400"
+    },
+    {
+      "name": "Presigned POST valido",
+      "status": "PASS",
+      "detail": "HTTP 204"
+    },
+    {
+      "name": "Trigger e DynamoDB",
+      "status": "FAIL",
+      "detail": "record=0"
+    },
+    {
+      "name": "Esecuzione",
+      "status": "FAIL",
+      "detail": "interrotta dall'utente"
+    },
+    {
+      "name": "Pulizia dati temporanei",
+      "status": "PASS",
+      "detail": "completata"
+    }
+  ]
+}

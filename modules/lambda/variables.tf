@@ -11,13 +11,18 @@ variable "bucket_arn" {
 }
 
 variable "dynamodb_table_arn" {
-  type = string
+  type    = string
   default = null
 }
 
 variable "reserved_concurrent_executions" {
-  type = number
+  type    = number
   default = -1
+}
+
+variable "timeout" {
+  type    = number
+  default = 30
 }
 
 variable "s3_actions" {
@@ -29,6 +34,11 @@ variable "kms_key_arn" {
   default = null
 }
 
+variable "additional_kms_key_arns" {
+  type    = list(string)
+  default = []
+}
+
 variable "kms_key_id" {
   type    = string
   default = null
@@ -36,7 +46,7 @@ variable "kms_key_id" {
 
 
 variable "quarantine_bucket_name" {
-  type = string
+  type    = string
   default = null
 }
 

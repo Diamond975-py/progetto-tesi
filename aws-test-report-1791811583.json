@@ -1,0 +1,74 @@
+{
+  "started_at": "2026-10-12T13:26:03.784722+00:00",
+  "finished_at": "2026-10-12T13:26:23.892916+00:00",
+  "account": "793452511140",
+  "region": "eu-south-1",
+  "api_id": "or967p4be5",
+  "summary": {
+    "PASS": 10,
+    "WARN": 1,
+    "FAIL": 1
+  },
+  "results": [
+    {
+      "name": "Identità AWS",
+      "status": "PASS",
+      "detail": "account 793452511140"
+    },
+    {
+      "name": "Convergenza Terraform",
+      "status": "PASS",
+      "detail": "nessuna modifica"
+    },
+    {
+      "name": "Configurazione Lambda s3_trigger",
+      "status": "PASS",
+      "detail": "state=Active, timeout=60, memory=256"
+    },
+    {
+      "name": "Configurazione Lambda upload_presign",
+      "status": "PASS",
+      "detail": "state=Active, timeout=15, memory=256"
+    },
+    {
+      "name": "Notifica S3→Lambda",
+      "status": "PASS",
+      "detail": "configurazioni=1"
+    },
+    {
+      "name": "S3 documenti-793452511140",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "name": "S3 documenti-793452511140-quarantine",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=aws:kms"
+    },
+    {
+      "name": "S3 documenti-793452511140-logs",
+      "status": "PASS",
+      "detail": "versioning=Enabled, encryption=AES256"
+    },
+    {
+      "name": "DynamoDB",
+      "status": "PASS",
+      "detail": "status=ACTIVE, SSE=ENABLED"
+    },
+    {
+      "name": "DynamoDB PITR",
+      "status": "WARN",
+      "detail": "DISABLED"
+    },
+    {
+      "name": "Esecuzione",
+      "status": "FAIL",
+      "detail": "User pool serverless-sharepoint-dev-user-pool: trovati 2"
+    },
+    {
+      "name": "Pulizia dati temporanei",
+      "status": "PASS",
+      "detail": "completata"
+    }
+  ]
+}

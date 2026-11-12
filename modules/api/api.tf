@@ -1,6 +1,6 @@
 
 resource "aws_api_gateway_rest_api" "api" {
-    name = var.api_name
+  name = var.api_name
 }
 
 resource "aws_lambda_permission" "apigw_upload" {
@@ -24,9 +24,17 @@ resource "aws_api_gateway_deployment" "deploy" {
       aws_api_gateway_method.post_upload.id,
 
       aws_api_gateway_integration.get_test_mock.id,
-      aws_api_gateway_integration.upload_lambda.id
+      aws_api_gateway_integration.upload_lambda.id,
+      aws_api_gateway_resource.files.path,
+      aws_api_gateway_method.get_files.authorization,
+      aws_api_gateway_method.get_files.authorizer_id,
+      aws_api_gateway_integration.list_files.type,
+      aws_api_gateway_integration.list_files.uri,
+      aws_api_gateway_integration.list_files.timeout_milliseconds
     ]))
   }
+
+  depends_on = [aws_lambda_permission.apigw_list_files]
 
   lifecycle {
     create_before_destroy = true
@@ -65,9 +73,9 @@ resource "aws_api_gateway_stage" "prod" {
 
       protocol = "$context.protocol"
 
-      responseLength = "$context.responseLength"  
+      responseLength = "$context.responseLength"
 
-    })  
+    })
 
   }
 
@@ -84,8 +92,8 @@ resource "aws_api_gateway_method_settings" "prod" {
   settings {
     throttling_rate_limit  = var.rate_limit
     throttling_burst_limit = var.burst_limit
-    logging_level           = "INFO"
-    metrics_enabled          = true
+    logging_level          = "INFO"
+    metrics_enabled        = true
   }
 }
 
